@@ -8,17 +8,17 @@
 <body>
   <main>
     <h1>Privacy policy — MNAIDesk Gmail Push</h1>
-    <p>Last updated November 20, 2026.</p>
+    <p>Last updated November 22, 2026.</p>
 
     <h2>Who operates the app</h2>
     <p>The MNAI estate operator runs this private, single-user automation for the MNAIDesk Gmail mailbox.</p>
 
     <h2>Data accessed and used</h2>
-    <p>The OAuth app uses the Gmail API’s <code>gmail.metadata</code> scope to read mailbox identity, message identifiers, history, headers and labels. This permission excludes message bodies and attachments and gives the OAuth app no ability to send, modify or delete mail.</p>
-    <p>Gmail sends change notifications through Google Cloud Pub/Sub. The notifications include the mailbox address and a Gmail history identifier. The watcher uses these notifications to find changes. The estate’s separate signed-in Gmail browser watcher can read message content when needed to classify an arrival while preserving its read state. Selected results are sent to the operator’s private message box.</p>
+    <p>The OAuth app uses the Gmail API’s read-only <code>gmail.readonly</code> scope to read the MNAIDesk mailbox identity, message identifiers, history, headers, labels, and message text. The watcher uses message text to classify incoming mail, identify requested actions or deadlines, and produce a screened summary for the operator. It processes plain-text and HTML message body parts in memory. It makes no attachment-download requests and does not use this scope to send, modify, or delete Gmail messages.</p>
+    <p>Gmail sends change notifications through Google Cloud Pub/Sub. The notifications include the mailbox address and a Gmail history identifier. The watcher uses these notifications to find changes. If the API cannot read a message body, the estate’s separate signed-in Gmail browser watcher can attempt the read while preserving the message’s read state.</p>
 
     <h2>Sharing and retention</h2>
-    <p>Google provides Gmail and Pub/Sub for the notification path. The estate retains operational records and screened notices under the operator’s control. The operator does not sell Gmail data or use it for advertising or model training. The app’s use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+    <p>Google provides Gmail and Pub/Sub for this service. The estate retains operational records and screened summaries under the operator’s control. Selected summaries are sent to the operator’s private message box. The watcher keeps full original message bodies out of its journal and excludes credential values from notices. The operator does not sell Gmail data or use it for advertising or model training. The app’s use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
 
     <h2>Access and deletion</h2>
     <p>OAuth credentials are stored on the operator’s machine with owner-only access. The operator can revoke the app’s access from <a href="https://myaccount.google.com/connections">Google Account connections</a> and remove locally stored records. For privacy or deletion requests, contact <a href="mailto:mnaidesk@gmail.com">mnaidesk@gmail.com</a>.</p>

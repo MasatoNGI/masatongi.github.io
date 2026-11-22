@@ -9,7 +9,7 @@
   <main>
     <h1>MNAIDesk Gmail Push</h1>
     <p>MNAIDesk Gmail Push is a private, single-user automation operated by the MNAI estate operator for the MNAIDesk Gmail mailbox. It helps the operator notice incoming mail that may require attention.</p>
-    <p>The app uses the Gmail API’s read-only <code>gmail.metadata</code> scope to watch for mailbox changes and read message headers and labels. Gmail push notifications delivered through Google Cloud Pub/Sub tell the watcher when to check for changes.</p>
+    <p>The app uses the Gmail API’s <code>gmail.readonly</code> scope to detect mailbox changes, read message metadata and text, and classify incoming mail for the operator. Gmail push notifications delivered through Google Cloud Pub/Sub tell the watcher when to check for changes.</p>
     <p><a href="privacy.html">Privacy policy</a></p>
   </main>
 </body>
