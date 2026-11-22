@@ -8,17 +8,19 @@
 <body>
   <main>
     <h1>Privacy policy — MNAIDesk Gmail Push</h1>
-    <p>Last updated November 22, 2026.</p>
+    <p>Last updated November 23, 2026.</p>
 
     <h2>Who operates the app</h2>
-    <p>The MNAI estate operator runs this private, single-user automation for the MNAIDesk Gmail mailbox.</p>
+    <p>The MNAI estate operator runs this private automation. It serves the MNAIDesk mailbox and supports a separately authorized personal Gmail mailbox belonging to the same operator.</p>
 
     <h2>Data accessed and used</h2>
-    <p>The OAuth app uses the Gmail API’s read-only <code>gmail.readonly</code> scope to read the MNAIDesk mailbox identity, message identifiers, history, headers, labels, and message text. The watcher uses message text to classify incoming mail, identify requested actions or deadlines, and produce a screened summary for the operator. It processes plain-text and HTML message body parts in memory. It makes no attachment-download requests and does not use this scope to send, modify, or delete Gmail messages.</p>
-    <p>Gmail sends change notifications through Google Cloud Pub/Sub. The notifications include the mailbox address and a Gmail history identifier. The watcher uses these notifications to find changes. If the API cannot read a message body, the estate’s separate signed-in Gmail browser watcher can attempt the read while preserving the message’s read state.</p>
+    <p>For each authorized mailbox, the app uses the Gmail API’s read-only <code>gmail.readonly</code> scope to read the mailbox identity, message identifiers, history, headers, labels, and selected message text. The watcher uses text to classify mail, identify requested actions or deadlines, and produce a screened summary. It processes plain-text and HTML message body parts in memory. It makes no attachment-download requests and does not use this scope to send, modify, or delete Gmail messages.</p>
+    <p>Gmail change notifications contain the mailbox address and a Gmail history identifier. Google Cloud Pub/Sub carries them through a separate topic and subscription for each mailbox. Periodic checks can recover missed changes. For MNAIDesk, a separate signed-in Gmail browser watcher can attempt a body read when the API body read fails, while preserving the message’s read state.</p>
 
     <h2>Sharing and retention</h2>
-    <p>Google provides Gmail and Pub/Sub for this service. The estate retains operational records and screened summaries under the operator’s control. Selected summaries are sent to the operator’s private message box. The watcher keeps full original message bodies out of its journal and excludes credential values from notices. The operator does not sell Gmail data or use it for advertising or model training. The app’s use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+    <p>On the operator’s machine, the estate retains operational records such as message IDs, headers, classification results, watch and delivery records, and screened summaries. Personal mailbox records and Gmail credentials are kept separately from MNAIDesk records and credentials. The watcher keeps full original message bodies out of its journal and excludes credential values from notices.</p>
+    <p>Selected MNAIDesk summaries go to the operator’s private message box. When personal notifications are enabled, selected personal summaries are delivered to the operator’s designated private Muse chat. A separate ntfy alert may cue the operator to check that chat when an item calls for the operator personally to act.</p>
+    <p>The operator does not sell Gmail data or use it for advertising or model training. The app’s use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
 
     <h2>Access and deletion</h2>
     <p>OAuth credentials are stored on the operator’s machine with owner-only access. The operator can revoke the app’s access from <a href="https://myaccount.google.com/connections">Google Account connections</a> and remove locally stored records. For privacy or deletion requests, contact <a href="mailto:mnaidesk@gmail.com">mnaidesk@gmail.com</a>.</p>
